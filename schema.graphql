@@ -1,0 +1,43 @@
+schema {
+    query: Query,
+    mutation: Mutation
+}
+
+
+type Query {
+    getStudy(id: ID!): Study
+}
+
+type Mutation {
+    addStudy(study: StudyInput!): Study
+}
+
+type Study {
+    id: ID
+    scopeDefinition: String
+    successDefinition: String
+    learningPath: [LearningTopic]
+    references: [Reference]
+}
+
+type LearningTopic {
+    id: ID
+    order: Int!
+    description: String
+
+}
+
+type Reference {
+    url: String
+    category: ReferenceCategory 
+}
+
+type ReferenceCategory{
+    id: ID    
+    name: String
+}
+
+input StudyInput {
+    scopeDefinition: String!
+    successDefinition: String!
+}
