@@ -6,6 +6,17 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
 
+var db DB
+
+func init() {
+	var err error
+	d, err := newDB("./db.sqlite")
+	if err != nil {
+		panic(err)
+	}
+	db = *d
+}
+
 // DB is the DB that will performs all operation
 type DB struct {
 	DB *gorm.DB

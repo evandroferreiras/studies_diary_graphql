@@ -7,18 +7,6 @@ import (
 	graphql "github.com/graph-gophers/graphql-go"
 )
 
-var db DB
-
-func init() {
-	var err error
-	d, err := newDB("./db.sqlite")
-	if err != nil {
-		panic(err)
-	}
-
-	db = *d
-}
-
 // Resolver is the root resolver
 type Resolver struct{}
 
